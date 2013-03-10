@@ -1,0 +1,21 @@
+label {
+	float: left; 
+	margin-right: 15px;
+	width: 60px;
+	font-weight: bold;
+}
+
+input {
+	width: 180px;
+	margin-bottom: 5px;
+}
+
+#submitbutton {
+	margin-left: 74px;
+	margin-top: 5px;
+	width: 130px;
+}
+
+br {
+	clear: left;
+}

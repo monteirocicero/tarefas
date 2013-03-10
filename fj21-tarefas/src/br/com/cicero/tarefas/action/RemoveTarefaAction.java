@@ -8,25 +8,25 @@ import br.com.cicero.tarefas.model.Tarefa;
 
 public class RemoveTarefaAction {
 	
-	private Tarefa tarefa;
+	private Long id;
 	
 	@Action(value = "removeTarefa", results = {
-			@Result(name = "ok", type = "redirectAction",
-					params = {"actionName", "listaTarefas"})
+			@Result(name = "ok", type = "httpheader",
+					params = {"status", "200"})
 	})
 	public String execute() {
 		
-		new TarefaDAO().remove(tarefa.getId());
+		new TarefaDAO().remove(id);
 		return "ok";
 		
 	}
-	
-	public void setTarefa(Tarefa tarefa) {
-		this.tarefa = tarefa;
-	}
-	
-	public Tarefa getTarefa() {
-		return tarefa;
+
+	public Long getId() {
+		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 }

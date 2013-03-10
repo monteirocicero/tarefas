@@ -14,6 +14,11 @@
 			$("#tarefa_"+id).html("Tarefa finalizada");
 		});
 	}
+	function removeTarefa(id) {
+		$.post("removeTarefa", {'id': id}, function(){
+			$("#tarefa_"+id).closest("tr").hide();
+		});
+	}
 </script>
 </head>
 <body>
@@ -32,7 +37,7 @@
 			<th>Ação</th>
 		</tr>
 		<c:forEach items="${tarefas}" var="tarefa">
-			<tr>
+			<tr id="tarefa_${tarefa.id}">
 				<td>${tarefa.id}</td>
 				<td>${tarefa.descricao}</td>
 				<c:if test="${tarefa.finalizado eq false}">
@@ -47,7 +52,7 @@
 				</c:if>
 				<td><fmt:formatDate value="${tarefa.dataFinalizacao.time}"
 						pattern="dd/MM/yyyy" /></td>
-				<td><a href="removeTarefa?tarefa.id=${tarefa.id}">Remover</a> |
+				<td><a href="#" onclick="removeTarefa(${tarefa.id})">Remover</a> |
 					<a href="mostraTarefa?tarefa.id=${tarefa.id}">Alterar</a></td>
 			</tr>
 		</c:forEach>
